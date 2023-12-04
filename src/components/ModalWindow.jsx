@@ -1,6 +1,8 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 
+import { BsGithub } from 'react-icons/bs';
+
 const ModalWindow = ({ isOpen, setIsOpen }) => {
   function closeModal() {
     setIsOpen(false);
@@ -31,23 +33,20 @@ const ModalWindow = ({ isOpen, setIsOpen }) => {
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95">
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
-                    Payment successful
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-[#1e1e1e] py-[30px] px-3 text-left flex flex-col items-center shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-2xl tracking-wide font-medium leading-6 text-white">
+                    Welcome back
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent you an email with all
-                      of the details of your order.
-                    </p>
-                  </div>
-
-                  <div className="mt-4">
+                  <p className="text-[13px] mt-2 text-white">Login to your account.</p>
+                  <div className="mt-6 w-full ">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md w-full border border-transparent bg-[#393939] hover:bg-[#3e3e3e] py-2 text-sm font-medium text-white focus:outline-none"
                       onClick={closeModal}>
-                      Got it, thanks!
+                      <BsGithub size={20} className="mr-3" />
+                      Sign in with GitHub
                     </button>
                   </div>
                 </Dialog.Panel>
