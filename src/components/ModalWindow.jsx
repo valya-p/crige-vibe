@@ -1,17 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
 import { BsGithub } from 'react-icons/bs';
 
-const ModalWindow = ({ isOpen, setIsOpen }) => {
-  function closeModal() {
-    setIsOpen(false);
-  }
+const ModalWindow = ({ isAuthModalActive, setAuthModalActive }) => {
+  const closeAuthModal = () => setAuthModalActive(false);
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-30" onClose={closeModal}>
+      <Transition appear show={isAuthModalActive} as={Fragment}>
+        <Dialog as="div" className="relative z-30" onClose={closeAuthModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -44,7 +42,7 @@ const ModalWindow = ({ isOpen, setIsOpen }) => {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md w-full border border-transparent bg-[#393939] hover:bg-[#3e3e3e] py-2 text-sm font-medium text-white focus:outline-none"
-                      onClick={closeModal}>
+                      onClick={closeAuthModal}>
                       <BsGithub size={20} className="mr-3" />
                       Sign in with GitHub
                     </button>

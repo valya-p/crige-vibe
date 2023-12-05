@@ -11,10 +11,10 @@ const TrackContainer = () => {
     <div className="mb-[42px] w-full xl:w-7/12">
       {/* заголовок */}
       <div className="mb-[42px]">
-        <h2 className="text-[24px] text-[#F65CF0] font-Amaranth font-{400} capitalize">
-          Recomended
+        <h2 className="font-amaranth text-[24px] text-[#F65CF0] font-{400} capitalize">
+          Chart<span className="text-[#E3D2F8]">Tracks</span>
         </h2>
-        <p className="text-[20px] text-[#eae4e4] font-['Open_Sans'] font-{400}">Подзаголовок</p>
+        <p className="text-[16px] text-[#eae4e4] font-sans font-{400}">Самые популярные треки</p>
       </div>
       {/* карточки */}
       {data?.map((obj) => (

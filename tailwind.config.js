@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         aclonica: ['Aclonica', 'sans'],
+        amaranth: ['Amaranth', 'sans'],
       },
       colors: {
         'dark-purple': '#6D36C7',
