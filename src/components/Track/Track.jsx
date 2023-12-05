@@ -42,9 +42,9 @@ const Track = ({track, active}) => {
                         </button>
                     )}
                 </div>
-                <div className={"flex flex-col truncate"}>
-                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] truncate">{track.title} 12312312312312312312312312</p>
-                    <p className="text-[12px] sm:text-[14px] font-sans truncate">
+                <div className={"flex flex-col"}>
+                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] line-clamp-1">{track.title} flfldfkfk dfldfkldfkldfkfdlkdfjil flffl fkfkffk fkfk</p>
+                    <p className="text-[12px] sm:text-[14px] font-sans ">
                         {track.artists.map((obj) => obj.name).join(', ')}
                     </p>
                 </div>
