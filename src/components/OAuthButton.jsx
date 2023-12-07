@@ -4,7 +4,7 @@ import { BsGithub } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogin } from '../redux/services/authService';
 
-function OAuthButton() {
+const OAuthButton = () => {
     // const { loading, userInfo, error } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 

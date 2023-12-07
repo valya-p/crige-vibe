@@ -1,5 +1,6 @@
 import React from 'react';
 import {useClickAway} from '@uidotdev/usehooks';
+import { useSelector } from 'react-redux';
 
 import {FaRegHeart, FaHeart} from 'react-icons/fa';
 import {HiPlay, HiPause, HiEllipsisHorizontal} from 'react-icons/hi2';
@@ -10,8 +11,14 @@ const Track = ({track, active}) => {
     const [heartActive, setHeartActive] = React.useState(false);
     const [openDropdown, setOpenDropdown] = React.useState(false);
 
+    const userInfo = useSelector(state => state.auth.userInfo);
+
     const onClickHeart = () => {
-        setHeartActive(!heartActive);
+        if (!userInfo) {
+            alert('ошибка')
+        } else {
+            setHeartActive(!heartActive);
+        }
     };
 
     // открывается повторно

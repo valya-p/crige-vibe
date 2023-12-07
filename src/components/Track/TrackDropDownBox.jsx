@@ -5,7 +5,6 @@ const TrackDropDownBox = React.forwardRef(( props, ref ) => {
   return (
     <div ref={ref}>
       <div
-        // hidden={!dropdown}
         className="absolute right-0 z-10 mt-2 w-58 border bg-opacity-95 border-[#E3D2F8] bg-[#282828] text-[#b2b2b2] text-sm p-1 rounded shadow-xl cursor-default whitespace-nowrap divide-y divide-[#3e3e3e]"
         role="menu"
         aria-orientation="vertical"

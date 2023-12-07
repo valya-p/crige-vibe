@@ -2,15 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 import { userLogin, userRefresh } from '../services/authService'
 import { jwtDecode } from "jwt-decode";
 
-// initialize userToken from local storage
 const userToken = localStorage.getItem('userToken')
   ? localStorage.getItem('userToken')
   : null
+const userInfo = userToken !== null ? jwtDecode(userToken).subject: null
 
 const initialState = {
   loading: false,
-  userInfo: null,
-  userToken,
+  userInfo: userInfo,
+  userToken: userToken,
   error: null,
   success: false,
 }
@@ -24,7 +24,6 @@ const authSlice = createSlice({
       state.loading = false
       state.userInfo = null
       state.userToken = null
-      state.error = null
     },
     setCredentials: (state, { payload }) => {
       state.userInfo = payload
@@ -56,6 +55,7 @@ const authSlice = createSlice({
     },
     [userRefresh.rejected]: (state, { payload }) => {
         state.error = payload
+        authSlice.caseReducers.logout(state)
     },
   },
 })

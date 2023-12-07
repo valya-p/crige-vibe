@@ -1,4 +1,3 @@
-import React from 'react';
 import Track from './Track';
 import { useGetChartsQuery } from '../../redux/services/cringeVibeCore';
 
@@ -18,7 +17,7 @@ const TrackContainer = () => {
       </div>
       {/* карточки */}
       {data?.map((obj) => (
-        <Track track={obj} active={false}/>
+        <Track track={obj} active={false} key={obj.id}/>
       ))}
     </div>
   );
