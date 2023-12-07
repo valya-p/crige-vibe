@@ -1,11 +1,11 @@
-import { FaDog } from 'react-icons/fa';
-import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
-import { HiEllipsisHorizontal } from 'react-icons/hi2';
+import {FaDog} from 'react-icons/fa';
+import {Menu, Transition} from '@headlessui/react';
+import {Fragment} from 'react';
+import {HiEllipsisHorizontal} from 'react-icons/hi2';
 
 const PlaylistDropDown = () => {
   return (
-    <Menu as="div" className="relative inline-block text-left z-30 font-w-none">
+    <Menu as="div" className="relative inline-block text-left font-w-none">
         <div>
           <Menu.Button>
             <HiEllipsisHorizontal size={24}
@@ -23,7 +23,7 @@ const PlaylistDropDown = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute mt-0 right-0 w-56 origin-top-right divide-y rounded-md shadow-lg ring-1 ring-black/5 focus:outline-none text-white border-[#E3D2F8] bg-[#282828] border divide-[#3e3e3e] ">
+          <Menu.Items className="z-10 absolute mt-0 right-0 w-56 origin-top-right divide-y rounded-md shadow-lg ring-1 ring-black/5 focus:outline-none text-white border-[#E3D2F8] bg-[#282828] border divide-[#3e3e3e] ">
             <div className="px-1 py-1 ">
               <Menu.Item>
                 {({ active }) => (

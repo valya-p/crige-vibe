@@ -23,8 +23,7 @@ const OAuthButton = () => {
             redirectUri={'http://192.168.0.16:5173'}
             onSuccess={onSuccess}
             onFailure={() => {
-            }}
-        >
+            }}>
             <div
                 className="inline-flex justify-center rounded-md w-full border border-transparent bg-[#393939] hover:bg-[#3e3e3e] py-2 text-sm font-medium text-white focus:outline-none">
                 <BsGithub size={20} className="mr-3"/>

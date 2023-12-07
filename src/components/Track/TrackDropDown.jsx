@@ -1,7 +1,7 @@
-import { FaDog } from 'react-icons/fa';
-import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
-import { HiEllipsisHorizontal } from 'react-icons/hi2';
+import {FaDog} from 'react-icons/fa';
+import {Menu, Transition} from '@headlessui/react';
+import {Fragment} from 'react';
+import {HiEllipsisHorizontal} from 'react-icons/hi2';
 
 const TrackDropDown = () => {
   return (

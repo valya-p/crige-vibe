@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import logosvg from '../assets/img/logo.svg';
 import {BsFire, BsPerson} from 'react-icons/bs';
@@ -7,7 +7,7 @@ import {AiFillPlaySquare, AiOutlineClose} from 'react-icons/ai';
 import {BiSolidRadio} from 'react-icons/bi';
 import {LiaSearchSolid} from 'react-icons/lia';
 
-const SideBar = ({ isSidebarActive, setSidebarActive, setAuthModalActive, isBlurred }) => {
+const SideBar = ({isSidebarActive, setSidebarActive, setAuthModalActive, isBlurred}) => {
     const handleProfileClick = () => setAuthModalActive(true);
 
     const userInfo = useSelector(state => state.auth.userInfo);
@@ -40,17 +40,18 @@ const SideBar = ({ isSidebarActive, setSidebarActive, setAuthModalActive, isBlur
                 </div>
             </div>
             <nav>
-                {userInfo ? 
-                (<div className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]">
-                    <img src={userInfo.avatar_url} alt="avatar" className='h-[24px] w-[24px] rounded-full' />
-                    <span className="ml-4 text-sm font-sans font-normal truncate">{userInfo.name}</span>
-                </div>) : 
-                (<div
-                    className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]"
-                    onClick={handleProfileClick}>
-                    <BsPerson size={24} />
-                    <span className="ml-4 text-sm font-sans font-normal">Профиль</span>
-                </div>)
+                {userInfo ?
+                    (<div
+                        className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]">
+                        <img src={userInfo.avatar_url} alt="avatar" className='h-[24px] w-[24px] rounded-full'/>
+                        <span className="ml-4 text-sm font-sans font-normal truncate">{userInfo.name}</span>
+                    </div>) :
+                    (<div
+                        className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]"
+                        onClick={handleProfileClick}>
+                        <BsPerson size={24}/>
+                        <span className="ml-4 text-sm font-sans font-normal">Профиль</span>
+                    </div>)
                 }
                 <div
                     onClick={userInfo ? undefined : handleProfileClick}
