@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import { useSelector } from 'react-redux';
 
 import SideBar from './components/SideBar';
 import Banner from './components/Banner';
@@ -13,6 +14,14 @@ import ModalWindow from './components/ModalWindow';
 function App() {
     const [isSidebarActive, setSidebarActive] = React.useState(false);
     const [isAuthModalActive, setAuthModalActive] = React.useState(false);
+
+    const userInfo = useSelector(state => state.auth.userInfo);
+
+    React.useEffect(() => {
+        if (userInfo && isAuthModalActive) {
+            setAuthModalActive(false);
+        }
+    }, [isAuthModalActive, userInfo]);
 
     return (
         <div id="appjs" className="flex flex-col bg-[#232323] h-screen">

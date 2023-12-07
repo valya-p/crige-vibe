@@ -1,6 +1,6 @@
 import picture2 from '../assets/img/picture2.png';
 import {  HiPlay } from 'react-icons/hi2';
-import DropDownd from './PlaylistDropDownd';
+import PlaylistDropDownd from './PlaylistDropDownd';
 
 
 const Playlist = () => {
@@ -15,7 +15,7 @@ const Playlist = () => {
       </div>
       <div className="flex justify-between w-[154px] mt-[9px] mb-1 font-semibold tracking-wide capitalize text-[14px] text-[#eae4e4] font-sans font-{600}">
         <h3 className="line-clamp-2">Заголовок fpfpfpfpfpfpfpfpfp ghggjghj</h3>
-        <DropDownd />
+        <PlaylistDropDownd />
       </div>
     </div>
   );
