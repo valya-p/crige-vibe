@@ -4,16 +4,14 @@ import {useSelector} from 'react-redux';
 import {FaRegHeart, FaHeart} from 'react-icons/fa';
 import {HiPlay, HiPause} from 'react-icons/hi2';
 
-import TrackDropDownd from './TrackDropDown';
+import TrackDropDown from './TrackDropDown';
 
-const Track = ({track, active}) => {
+const Track = ({ track, active }) => {
     const [heartActive, setHeartActive] = React.useState(false);
 
     const userInfo = useSelector(state => state.auth.userInfo);
 
-    const onClickHeart = () => {
-        setHeartActive(!heartActive);
-    };
+    const onClickHeart = () => setHeartActive(!heartActive);
 
     return (
         <div
@@ -38,10 +36,9 @@ const Track = ({track, active}) => {
                         </button>
                     )}
                 </div>
-                <div className={"flex flex-col"}>
-                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] line-clamp-1">{track.title} flfldfkfk
-                        dfldfkldfkldfkfdlkdfjil flffl fkfkffk fkfk</p>
-                    <p className="text-[12px] sm:text-[14px] font-sans ">
+                <div className={"flex flex-col overflow-hidden"}>
+                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] truncate">{track.title}</p>
+                    <p className="text-[12px] sm:text-[14px] font-sans truncate">
                         {track.artists.map((obj) => obj.name).join(', ')}
                     </p>
                 </div>
@@ -55,7 +52,7 @@ const Track = ({track, active}) => {
                         <FaRegHeart size={24} color="#F65CF0"/>
                     )}
                 </button>}
-                <TrackDropDownd/>
+                <TrackDropDown heartActive={heartActive} onClickHeart={onClickHeart}/>
             </div>
         </div>
     );

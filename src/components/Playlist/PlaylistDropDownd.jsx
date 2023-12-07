@@ -3,12 +3,11 @@ import {Menu, Transition} from '@headlessui/react';
 import React, {Fragment} from 'react';
 import {HiEllipsisHorizontal} from 'react-icons/hi2';
 import {HiDownload} from "react-icons/hi";
-import {FaPersonWalking, FaPlus} from "react-icons/fa6";
-import {FiInfo, FiShare} from "react-icons/fi";
+import {FiShare} from "react-icons/fi";
 
-const TrackDropDown = ({ heartActive, onClickHeart }) => {
+const PlaylistDropDown = ({heartActive, onClickHeart}) => {
     return (
-        <Menu as="div" className="relative inline-block text-left">
+        <Menu as="div" className="relative inline-block text-left font-w-none">
             <div>
                 <Menu.Button>
                     <HiEllipsisHorizontal size={24}
@@ -27,13 +26,13 @@ const TrackDropDown = ({ heartActive, onClickHeart }) => {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items
-                    className="z-10 absolute mt-0 right-0 w-56 origin-top-right divide-y rounded-md text-white border-[#E3D2F8] bg-[#282828] border divide-[#3e3e3e] shadow-lg ring-1 ring-black/5 focus:outline-none">
+                    className="z-30 absolute mt-0 -right-8 w-56 origin-top-right divide-y rounded-md shadow-lg ring-1 ring-black/5 focus:outline-none text-white border-[#E3D2F8] bg-[#282828] border divide-[#3e3e3e] ">
                     <div className="px-1 py-1 ">
                         <Menu.Item>
                             {({active}) => (
                                 <button
                                     className={`${
-                                        active ? 'bg-violet-700' : ''
+                                        active ? 'bg-violet-500' : ''
                                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     onClick={onClickHeart}
                                 >
@@ -50,7 +49,7 @@ const TrackDropDown = ({ heartActive, onClickHeart }) => {
                             {({active}) => (
                                 <button
                                     className={`${
-                                        active ? 'bg-violet-700' : ''
+                                        active ? 'bg-violet-500' : ''
                                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                 >
                                     <HiDownload size={16} className={"mr-2"}/>
@@ -64,51 +63,11 @@ const TrackDropDown = ({ heartActive, onClickHeart }) => {
                             {({active}) => (
                                 <button
                                     className={`${
-                                        active ? 'bg-violet-700' : ''
-                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                >
-                                    <FaPlus size={16} className={"mr-2"}/>
-                                    Добавить в Плейлист
-                                </button>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({active}) => (
-                                <button
-                                    className={`${
-                                        active ? 'bg-violet-700' : ''
+                                        active ? 'bg-violet-500' : ''
                                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                 >
                                     <FiShare size={16} className={"mr-2"}/>
                                     Поделиться
-                                </button>
-                            )}
-                        </Menu.Item>
-                    </div>
-                    <div className="px-1 py-1">
-                        <Menu.Item>
-                            {({active}) => (
-                                <button
-                                    className={`${
-                                        active ? 'bg-violet-700' : ''
-                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                >
-                                    <FaPersonWalking size={16} className={"mr-2"} />
-                                    Перейти к исполнителю
-                                </button>
-                            )}
-                        </Menu.Item>
-                    </div>
-                    <div className="px-1 py-1">
-                        <Menu.Item>
-                            {({active}) => (
-                                <button
-                                    className={`${
-                                        active ? 'bg-violet-700' : ''
-                                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                                >
-                                    <FiInfo size={16} className={"mr-2"}/>
-                                    О треке
                                 </button>
                             )}
                         </Menu.Item>
@@ -119,4 +78,4 @@ const TrackDropDown = ({ heartActive, onClickHeart }) => {
     )
 };
 
-export default TrackDropDown;
+export default PlaylistDropDown;

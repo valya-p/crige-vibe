@@ -2,8 +2,8 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 import logosvg from '../assets/img/logo.svg';
-import {BsFire, BsPerson} from 'react-icons/bs';
-import {AiFillPlaySquare, AiOutlineClose} from 'react-icons/ai';
+import {BsCollectionPlayFill, BsFire, BsPersonFill} from 'react-icons/bs';
+import {AiOutlineClose} from 'react-icons/ai';
 import {BiSolidRadio} from 'react-icons/bi';
 import {LiaSearchSolid} from 'react-icons/lia';
 
@@ -31,7 +31,7 @@ const SideBar = ({isSidebarActive, setSidebarActive, setAuthModalActive, isBlurr
                     <input
                         type="text"
                         id="default-search"
-                        className="block w-full py-2 pl-4 text-sm text-white  bg-zinc-800 rounded-[30px] border-2 border-violet-700 focus:outline-none"
+                        className="block w-full py-2 pl-4 text-sm text-white bg-zinc-800 rounded-[30px] border-2 border-violet-700 focus:outline-none"
                         placeholder="Поиск..."
                         autoComplete="off"
                         required
@@ -42,32 +42,32 @@ const SideBar = ({isSidebarActive, setSidebarActive, setAuthModalActive, isBlurr
             <nav>
                 {userInfo ?
                     (<div
-                        className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]">
+                        className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-violet-700">
                         <img src={userInfo.avatar_url} alt="avatar" className='h-[24px] w-[24px] rounded-full'/>
                         <span className="ml-4 text-sm font-sans font-normal truncate">{userInfo.name}</span>
                     </div>) :
                     (<div
-                        className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]"
+                        className="flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-violet-700"
                         onClick={handleProfileClick}>
-                        <BsPerson size={24}/>
+                        <BsPersonFill size={24}/>
                         <span className="ml-4 text-sm font-sans font-normal">Профиль</span>
                     </div>)
                 }
                 <div
                     onClick={userInfo ? undefined : handleProfileClick}
-                    className={`flex items-center cursor-pointer hover:text-[#FFFFFF] hover:bg-[#232323] mx-2 px-4 py-2 rounded duration-300`}>
+                    className={`flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-violet-700`}>
                     <BsFire size={24}/>
                     <span className="ml-4 text-sm font-sans font-normal">Популярное</span>
                 </div>
                 <div
                     onClick={userInfo ? undefined : handleProfileClick}
-                    className={`flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]`}>
-                    <AiFillPlaySquare size={24}/>
+                    className={`flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-violet-700`}>
+                    <BsCollectionPlayFill size={24}/>
                     <span className="ml-4 text-sm font-sans font-normal">Плейлисты</span>
                 </div>
                 <div
                     onClick={userInfo ? undefined : handleProfileClick}
-                    className={`flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-[#232323]`}>
+                    className={`flex items-center cursor-pointer hover:text-[#FFFFFF] mx-2 px-4 py-2 rounded duration-300 hover:bg-violet-700`}>
                     <BiSolidRadio size={24}/>
                     <span className="ml-4 text-sm font-sans font-normal">Радио</span>
                 </div>

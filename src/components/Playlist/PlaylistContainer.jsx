@@ -1,9 +1,8 @@
-import Playlist from './Playlist';
+import Playlist from './Playlist.jsx';
 
 const PlaylistContainer = () => {
     return (
         <div className="xl:w-4/12">
-            {/* заголовок */}
             <div className="mb-[40px]">
                 <h2 className="font-amaranth text-[24px] text-[#F65CF0] font-{400} capitalize">
                     Day's<span className="text-[#E3D2F8]">Playlists</span>

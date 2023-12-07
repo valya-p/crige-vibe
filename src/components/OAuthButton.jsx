@@ -1,16 +1,16 @@
 import OAuth2Login from 'react-simple-oauth2-login';
 
-import { BsGithub } from 'react-icons/bs';
-import { useDispatch, useSelector } from 'react-redux';
-import { userLogin } from '../redux/services/authService';
-import { FaSpinner } from 'react-icons/fa';
+import {BsGithub} from 'react-icons/bs';
+import {useDispatch, useSelector} from 'react-redux';
+import {userLogin} from '../redux/services/authService';
+import {FaSpinner} from 'react-icons/fa';
 
 const OAuthButton = () => {
-    const { loading, userInfo, error } = useSelector((state) => state.auth);
+    const {loading, userInfo, error} = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
-    const onSuccess = ({ code }) => {
-        dispatch(userLogin({ code }));
+    const onSuccess = ({code}) => {
+        dispatch(userLogin({code}));
     };
 
     return !loading ? (
