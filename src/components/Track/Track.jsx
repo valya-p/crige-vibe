@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import {FaRegHeart, FaHeart} from 'react-icons/fa';
-import {HiPlay, HiPause } from 'react-icons/hi2';
+import {HiPlay, HiPause} from 'react-icons/hi2';
 
 import TrackDropDownd from './TrackDropDown';
 
@@ -39,7 +39,8 @@ const Track = ({track, active}) => {
                     )}
                 </div>
                 <div className={"flex flex-col"}>
-                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] line-clamp-1">{track.title} flfldfkfk dfldfkldfkldfkfdlkdfjil flffl fkfkffk fkfk</p>
+                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] line-clamp-1">{track.title} flfldfkfk
+                        dfldfkldfkldfkfdlkdfjil flffl fkfkffk fkfk</p>
                     <p className="text-[12px] sm:text-[14px] font-sans ">
                         {track.artists.map((obj) => obj.name).join(', ')}
                     </p>
@@ -54,7 +55,7 @@ const Track = ({track, active}) => {
                         <FaRegHeart size={24} color="#F65CF0"/>
                     )}
                 </button>}
-                <TrackDropDownd />
+                <TrackDropDownd/>
             </div>
         </div>
     );

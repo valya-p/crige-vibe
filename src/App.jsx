@@ -7,7 +7,7 @@ import TrackContainer from './components/Track/TrackContainer';
 import PlaylistContainer from './components/PlaylistContainer';
 import Player from './components/Player';
 
-import { HiMenu } from 'react-icons/hi';
+import {HiMenu} from 'react-icons/hi';
 import ModalWindow from './components/ModalWindow';
 
 function App() {
@@ -37,18 +37,18 @@ function App() {
                         className={`${
                             isSidebarActive ? 'hidden' : ''
                         } text-[#969696] p-1 ml-2.5 inline-block lg:hidden fixed z-30`}>
-                        <HiMenu size={24} />
+                        <HiMenu size={24}/>
                     </button>
                     <main className="text-white relative">
-                        <Banner />
+                        <Banner/>
                         {/* основная часть */}
                         <div className="pr-[16px] pl-[40px] sm:pl-[35px] sm:pr-[35px]">
                             {/* <TrackCarousel /> */}
                             <div className="flex justify-between flex-wrap">
                                 {/* блок с треками */}
-                                <TrackContainer />
+                                <TrackContainer/>
                                 {/* блок с плейлистами */}
-                                <PlaylistContainer />
+                                <PlaylistContainer/>
                             </div>
                         </div>
                     </main>
@@ -64,7 +64,7 @@ function App() {
                 className={`${isAuthModalActive ? 'blur-sm' : ''} ${
                     isSidebarActive ? 'max-lg:blur-sm' : ''
                 }`}>
-                <Player />
+                <Player/>
             </div>
         </div>
     );
