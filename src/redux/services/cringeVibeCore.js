@@ -19,7 +19,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result?.error?.status === 401) {
     await api.dispatch(userRefresh())
     const { error } = api.getState().auth 
-    if (error !== null) {
+    if (error === null) {
       result = await baseQuery(args, api, extraOptions)
     }
   }

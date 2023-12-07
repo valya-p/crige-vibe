@@ -1,30 +1,19 @@
 import React from 'react';
-import {useClickAway} from '@uidotdev/usehooks';
 import { useSelector } from 'react-redux';
 
 import {FaRegHeart, FaHeart} from 'react-icons/fa';
-import {HiPlay, HiPause, HiEllipsisHorizontal} from 'react-icons/hi2';
+import {HiPlay, HiPause } from 'react-icons/hi2';
 
-import TrackDropDownBox from './TrackDropDownBox';
+import TrackDropDownd from './TrackDropDown';
 
 const Track = ({track, active}) => {
     const [heartActive, setHeartActive] = React.useState(false);
-    const [openDropdown, setOpenDropdown] = React.useState(false);
 
     const userInfo = useSelector(state => state.auth.userInfo);
 
     const onClickHeart = () => {
-        if (!userInfo) {
-            alert('ошибка')
-        } else {
-            setHeartActive(!heartActive);
-        }
+        setHeartActive(!heartActive);
     };
-
-    // открывается повторно
-    const ref = useClickAway(() => {
-        setOpenDropdown(false);
-    });
 
     return (
         <div
@@ -58,21 +47,14 @@ const Track = ({track, active}) => {
             </div>
             <div className="flex items-center relative">
                 <p className="text-[14px] mr-[24px] hidden sm:block">{track.duration_text}</p>
-                <button className="mr-[24px] hidden sm:block" onClick={onClickHeart}>
+                {userInfo && <button className="mr-[24px] hidden sm:block" onClick={onClickHeart}>
                     {heartActive ? (
                         <FaHeart size={24} color="#F65CF0"/>
                     ) : (
                         <FaRegHeart size={24} color="#F65CF0"/>
                     )}
-                </button>
-                <button>
-                    <HiEllipsisHorizontal
-                        size={24}
-                        color="#F65CF0"
-                        onClick={() => setOpenDropdown(!openDropdown)}
-                    />
-                </button>
-                {openDropdown && <TrackDropDownBox ref={ref}/>}
+                </button>}
+                <TrackDropDownd />
             </div>
         </div>
     );

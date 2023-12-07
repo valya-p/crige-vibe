@@ -3,9 +3,9 @@ import { Menu, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { HiEllipsisHorizontal } from 'react-icons/hi2';
 
-const PlaylistDropDownd = () => {
+const TrackDropDownd = () => {
   return (
-    <Menu as="div" className="relative inline-block text-left z-30 font-w-none">
+    <Menu as="div" className="relative inline-block text-left z-30">
         <div>
           <Menu.Button>
             <HiEllipsisHorizontal size={24}
@@ -89,7 +89,77 @@ const PlaylistDropDownd = () => {
                         aria-hidden="true"
                       />
                     )}
+                    Добавить в Плейлист
+                  </button>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    {active ? (
+                      <FaDog
+                        className="mr-2 h-5 w-5"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <FaDog
+                        className="mr-2 h-5 w-5"
+                        aria-hidden="true"
+                      />
+                    )}
                     Поделиться
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="px-1 py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    {active ? (
+                      <FaDog
+                        className="mr-2 h-5 w-5 text-violet-400"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <FaDog
+                        className="mr-2 h-5 w-5 text-violet-400"
+                        aria-hidden="true"
+                      />
+                    )}
+                    Перейти к исполнителю
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="px-1 py-1">
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    className={`${
+                      active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    {active ? (
+                      <FaDog
+                        className="mr-2 h-5 w-5 text-violet-400"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <FaDog
+                        className="mr-2 h-5 w-5 text-violet-400"
+                        aria-hidden="true"
+                      />
+                    )}
+                    О треке
                   </button>
                 )}
               </Menu.Item>
@@ -100,4 +170,4 @@ const PlaylistDropDownd = () => {
   )
 };
 
-export default PlaylistDropDownd;
+export default TrackDropDownd;
