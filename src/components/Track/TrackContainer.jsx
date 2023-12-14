@@ -16,9 +16,9 @@ const TrackContainer = () => {
                 <p className="text-[16px] text-[#eae4e4] font-sans font-{400}">Самые популярные треки</p>
             </div>
             {/* карточки */}
-            {data?.map((obj) => (
-                <Track track={obj} active={false} key={obj.id}/>
-            ))}
+            {!isFetching ? data?.map((obj) => (
+                <Track track={obj} key={obj.id}/>
+            )): [...new Array(8)].map((_, index) => <Track key={index} />)}
         </div>
     );
 };

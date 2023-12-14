@@ -20,7 +20,7 @@ const OAuthButton = () => {
             scope={'read:user user:email'}
             responseType="code"
             clientId="db7f47727df511d0f54a"
-            redirectUri={'http://192.168.0.16:5173'}
+            redirectUri={'http://localhost:5173'}
             onSuccess={onSuccess}
             onFailure={() => {
             }}>

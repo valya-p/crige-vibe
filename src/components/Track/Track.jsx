@@ -1,10 +1,11 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React from 'react'
+import {useSelector} from 'react-redux'
 
-import {FaRegHeart, FaHeart} from 'react-icons/fa';
-import {HiPlay, HiPause} from 'react-icons/hi2';
+import {FaRegHeart, FaHeart} from 'react-icons/fa'
+import {HiPlay, HiPause} from 'react-icons/hi2'
+import Skeleton from 'react-loading-skeleton'
 
-import TrackDropDown from './TrackDropDown';
+import TrackDropDown from './TrackDropDown'
 
 const Track = ({ track, active }) => {
     const [heartActive, setHeartActive] = React.useState(false);
@@ -19,11 +20,14 @@ const Track = ({ track, active }) => {
             <div className="min-w-0 flex items-center relative group">
                 <div
                     className="h-[50px] min-w-[50px] w-[50px] relative mr-[14px] flex justify-center items-center cursor-pointer ">
+                    {track ? 
                     <div
                         className="absolute inset-0 rounded-md bg-cover transition-brightness duration-200 hover:brightness-50"
                         style={{
                             backgroundImage: `url(${track.cover_url})`,
-                        }}/>
+                        }}/> :
+                    <Skeleton width={50} height={50} highlightColor={'#bdbdbd'}/>
+                    }
                     {active ? (
                         <button
                             className="absolute left-50% bottom-50% cursor-auto duration-200 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-105 pointer-events-none">
@@ -36,23 +40,25 @@ const Track = ({ track, active }) => {
                         </button>
                     )}
                 </div>
-                <div className={"flex flex-col overflow-hidden"}>
-                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] truncate">{track.title}</p>
+                <div className={"flex flex-col overflow-hidden w-[500px]"}>
+                    <p className="text-[14px] sm:text-[16px] font-sans mb-[5px] truncate">{track ? track.title : <Skeleton highlightColor={'#bdbdbd'}/>}</p>
                     <p className="text-[12px] sm:text-[14px] font-sans truncate">
-                        {track.artists.map((obj) => obj.name).join(', ')}
+                        {track ? track.artists.map((obj) => obj.name).join(', ') : <Skeleton highlightColor={'#bdbdbd'}/>}
                     </p>
                 </div>
             </div>
             <div className="flex items-center relative">
-                <p className="text-[14px] mr-[24px] hidden sm:block">{track.duration_text}</p>
-                {userInfo && <button className="mr-[24px] hidden sm:block" onClick={onClickHeart}>
+                <p className="text-[14px] mr-[24px] hidden sm:block">{track ? track.duration_text : <Skeleton highlightColor={'#bdbdbd'}/>}</p>
+                {track ? userInfo && <button className="mr-[24px] hidden sm:block" onClick={onClickHeart}>
                     {heartActive ? (
                         <FaHeart size={24} color="#F65CF0"/>
                     ) : (
                         <FaRegHeart size={24} color="#F65CF0"/>
                     )}
-                </button>}
-                <TrackDropDown heartActive={heartActive} onClickHeart={onClickHeart}/>
+                </button> :
+                <Skeleton width={24} height={24} highlightColor={'#bdbdbd'}/>
+                }
+                {track ? <TrackDropDown heartActive={heartActive} onClickHeart={onClickHeart}/> : <Skeleton width={24} height={10} className='ml-[10px]' highlightColor={'#bdbdbd'}/>}
             </div>
         </div>
     );

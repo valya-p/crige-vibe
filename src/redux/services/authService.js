@@ -11,7 +11,6 @@ const config = {
 export const userLogin = createAsyncThunk(
     'auth/login',
     async ({code}, {rejectWithValue}) => {
-        console.log(code)
         try {
             const {data} = await axios.post(
                 `${import.meta.env.VITE_BACKEND_URL}/api/oauth/token`,

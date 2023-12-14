@@ -31,9 +31,11 @@ export const cringeCoreApi = createApi({
     reducerPath: 'cringeCoreApi',
     endpoints: (builder) => ({
         getCharts: builder.query({query: ({limit, offset}) => `charts?limit=${limit}&offset=${offset}`}),
+        getNewReleases: builder.query({query: ({limit, offset}) => `new-releases?limit=${limit}&offset=${offset}`}),
     }),
 });
 
 export const {
     useGetChartsQuery,
+    useGetNewReleasesQuery,
 } = cringeCoreApi;
