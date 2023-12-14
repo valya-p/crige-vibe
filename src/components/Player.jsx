@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import { trackFetch } from '../redux/services/musicService'
-import { pause } from '../redux/slices/trackSlice'
+import {trackFetch} from '../redux/services/musicService'
+import {pause} from '../redux/slices/trackSlice'
 
 import {
     HiPlay,
@@ -13,8 +13,6 @@ import {
 import {TbPlayerSkipBackFilled, TbPlayerSkipForwardFilled} from 'react-icons/tb';
 import {FaRegHeart} from 'react-icons/fa';
 
-import Skeleton from 'react-loading-skeleton'
-
 const Player = () => {
     const [progress, setProgress] = React.useState(0.0)
     const currentTrack = useSelector(state => state.trackSlice)
@@ -22,7 +20,7 @@ const Player = () => {
     const audioElem = React.useRef()
 
     const onClickPlay = () => {
-        dispatch(trackFetch({ trackId: currentTrack.data.id }))
+        dispatch(trackFetch({trackId: currentTrack.data.id}))
     }
 
     const onClickPause = () => {
@@ -31,10 +29,9 @@ const Player = () => {
 
     React.useEffect(() => {
         if (currentTrack.isPlaying) {
-          audioElem.current.play();
-        }
-        else {
-          audioElem.current.pause();
+            audioElem.current.play();
+        } else {
+            audioElem.current.pause();
         }
     }, [currentTrack.isPlaying])
 
@@ -63,7 +60,7 @@ const Player = () => {
                             className="absolute inset-0 rounded-md bg-cover transition-brightness duration-500 group-hover:brightness-50"
                             style={{
                                 backgroundImage: `url(${currentTrack?.data?.cover_url})`,
-                            }}/> 
+                            }}/>
                         {currentTrack.isPlaying ? (
                             <button
                                 className="absolute left-50% bottom-50% cursor-auto duration-200 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-105 pointer-events-none">
@@ -90,7 +87,10 @@ const Player = () => {
                     </div>
                 </div>
                 <div className="w-full bg-[#676666] h-[5px] cursor: pointer rounded-[30px]">
-                    <div style={{width: `${progress}%`}} className={`h-[5px] bg-[#F65CF0] rounded-[30px]`}></div>
+                    <div style={{
+                        transform: `scaleX(${progress}%)`,
+                        transition: "all .4s linear 0s"
+                    }} className={`origin-left h-[5px] bg-[#F65CF0] rounded-full`}></div>
                 </div>
                 <div className="flex justify-center items-center ml-[20px]">
                     <p className="mr-[24px] hidden sm:block">{currentTrack?.data?.duration_text}</p>
