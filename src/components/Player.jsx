@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {trackFetch} from '../redux/services/musicService'
-import {pause} from '../redux/slices/trackSlice'
+import {disableLoading, pause, setProgress} from '../redux/slices/trackSlice'
 
 import {
     HiPlay,
@@ -14,9 +14,10 @@ import {TbPlayerSkipBackFilled, TbPlayerSkipForwardFilled} from 'react-icons/tb'
 import {FaRegHeart} from 'react-icons/fa';
 
 const Player = () => {
-    const [progress, setProgress] = React.useState(0.0)
     const currentTrack = useSelector(state => state.trackSlice)
     const dispatch = useDispatch()
+
+    const clickRef = React.useRef()
     const audioElem = React.useRef()
 
     const onClickPlay = () => {
@@ -28,22 +29,39 @@ const Player = () => {
     }
 
     React.useEffect(() => {
-        if (currentTrack.isPlaying) {
-            audioElem.current.play();
-        } else {
-            audioElem.current.pause();
+        if (!currentTrack.isLoading) {
+            currentTrack.isPlaying ? audioElem.current.play() : audioElem.current.pause()
         }
-    }, [currentTrack.isPlaying])
+    }, [currentTrack.isPlaying, currentTrack.isLoading])
 
     const onPlaying = () => {
         const duration = audioElem.current.duration
         const currentTime = audioElem.current.currentTime
-        setProgress(currentTime / duration * 100)
+        dispatch(
+            setProgress({
+                progress: currentTime / duration * 100,
+                duration: duration
+            })
+        )
+    }
+
+    const checkWidth = (e) => {
+        let rect = e.target.getBoundingClientRect()
+        let x = e.clientX - rect.left
+        let width = clickRef.current.clientWidth
+        const divProgress = x / width * 100
+
+        audioElem.current.currentTime = divProgress / 100 * currentTrack.duration
+    }
+
+    const onCanPlay = async () => {
+        dispatch(disableLoading())
     }
 
     return (
         <>
-            <audio src={currentTrack?.data?.download_info[0].direct_link} ref={audioElem} onTimeUpdate={onPlaying}/>
+            <audio onCanPlay={onCanPlay} src={currentTrack?.data?.download_info[0].direct_link} ref={audioElem}
+                   onTimeUpdate={onPlaying}/>
             <div
                 className="row-start-6 bg-[#1D1D1D] text-white py-[10px] px-[15px] flex justify-between items-center sm:py-[15px] lg:px-[85px] md:py-[15px] md:px-[50px] group">
                 <div className="flex items-center mr-[10px]">
@@ -86,9 +104,13 @@ const Player = () => {
                         </p>
                     </div>
                 </div>
-                <div className="w-full bg-[#676666] h-[5px] cursor: pointer rounded-[30px]">
+                <div
+                    ref={clickRef}
+                    onClick={checkWidth}
+                    className="w-full bg-[#676666] h-[5px] cursor-pointer rounded-[30px]"
+                >
                     <div style={{
-                        transform: `scaleX(${progress}%)`,
+                        transform: `scaleX(${currentTrack.progress}%)`,
                         transition: "all .4s linear 0s"
                     }} className={`origin-left h-[5px] bg-[#F65CF0] rounded-full`}></div>
                 </div>

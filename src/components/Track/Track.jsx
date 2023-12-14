@@ -25,7 +25,7 @@ const Track = ({ track, currentTrack }) => {
         dispatch(pause())
     }
 
-    const isPlaying = currentTrack?.data?.id == track?.id & (currentTrack?.isPlaying || currentTrack?.isLoading) & currentTrack?.data !== null
+    const isPlaying = currentTrack?.data?.id === track?.id & (currentTrack?.isPlaying) & currentTrack?.data !== null
 
     return (
         <div

@@ -5,7 +5,7 @@ export const trackFetch = createAsyncThunk(
     'track',
     async ({ trackId }, { getState, rejectWithValue }) => {
         const track = getState().trackSlice.data
-        if (track?.id == trackId) {
+        if (track?.id === trackId) {
             return
         }
         try {
