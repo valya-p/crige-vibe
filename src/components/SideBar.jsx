@@ -10,7 +10,7 @@ import {LiaSearchSolid} from 'react-icons/lia';
 const SideBar = ({isSidebarActive, setSidebarActive, setAuthModalActive, isBlurred}) => {
     const handleProfileClick = () => setAuthModalActive(true);
 
-    const userInfo = useSelector(state => state.auth.userInfo);
+    const userInfo = useSelector(state => state.authSlice.userInfo);
 
     return (
         <aside

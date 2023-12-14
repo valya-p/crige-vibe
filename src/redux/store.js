@@ -1,13 +1,13 @@
-import {configureStore} from '@reduxjs/toolkit';
-import track from './slices/trackSlice';
-import {cringeCoreApi} from './services/cringeVibeCore';
-import auth from './slices/authSlice'
+import {configureStore} from '@reduxjs/toolkit'
+import {cringeCoreApi} from './services/cringeVibeCore'
+import authSlice from './slices/authSlice'
+import trackSlice from './slices/trackSlice'
 
 export const store = configureStore({
     reducer: {
-        track,
         [cringeCoreApi.reducerPath]: cringeCoreApi.reducer,
-        auth,
+        authSlice,
+        trackSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cringeCoreApi.middleware),
 });

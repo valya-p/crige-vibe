@@ -1,10 +1,13 @@
 import Track from './Track';
 import {useGetChartsQuery} from '../../redux/services/cringeVibeCore';
+import {useSelector} from 'react-redux'
 
 const TrackContainer = () => {
     const limit = 10;
     const offset = 0;
-    const {data, isFetching, error} = useGetChartsQuery({limit, offset});
+    const {data, isFetching, error} = useGetChartsQuery({ limit, offset });
+
+    const currentTrack = useSelector(state => state.trackSlice)
 
     return (
         <div className="mb-[42px] w-full xl:w-7/12">
@@ -17,7 +20,7 @@ const TrackContainer = () => {
             </div>
             {/* карточки */}
             {!isFetching ? data?.map((obj) => (
-                <Track track={obj} key={obj.id}/>
+                <Track track={obj} key={obj.id} currentTrack={currentTrack}/>
             )): [...new Array(8)].map((_, index) => <Track key={index} />)}
         </div>
     );

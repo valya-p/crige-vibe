@@ -16,7 +16,7 @@ function App() {
     const [isSidebarActive, setSidebarActive] = React.useState(false);
     const [isAuthModalActive, setAuthModalActive] = React.useState(false);
 
-    const userInfo = useSelector(state => state.auth.userInfo);
+    const userInfo = useSelector(state => state.authSlice.userInfo);
 
     React.useEffect(() => {
         if (userInfo && isAuthModalActive) {
@@ -73,7 +73,7 @@ function App() {
             <div
                 className={`${isAuthModalActive ? 'blur-sm' : ''} ${
                     isSidebarActive ? 'max-lg:blur-sm' : ''
-                }`}>
+            }`}>
                 <Player/>
             </div>
         </div>

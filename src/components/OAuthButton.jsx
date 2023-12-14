@@ -6,7 +6,7 @@ import {userLogin} from '../redux/services/authService';
 import {FaSpinner} from 'react-icons/fa';
 
 const OAuthButton = () => {
-    const {loading, userInfo, error} = useSelector((state) => state.auth);
+    const {loading, userInfo, error} = useSelector((state) => state.authSlice);
     const dispatch = useDispatch();
 
     const onSuccess = ({code}) => {
