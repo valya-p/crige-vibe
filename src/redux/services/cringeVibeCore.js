@@ -32,10 +32,12 @@ export const cringeCoreApi = createApi({
     endpoints: (builder) => ({
         getCharts: builder.query({query: ({limit, offset}) => `charts?limit=${limit}&offset=${offset}`}),
         getNewReleases: builder.query({query: ({limit, offset}) => `new-releases?limit=${limit}&offset=${offset}`}),
+        getAlbum: builder.query({query: ({albumId}) => `albums/${albumId}`}),
     }),
 });
 
 export const {
     useGetChartsQuery,
     useGetNewReleasesQuery,
+    useLazyGetAlbumQuery,
 } = cringeCoreApi;

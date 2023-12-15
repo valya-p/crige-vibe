@@ -1,13 +1,23 @@
-import Track from './Track';
-import {useGetChartsQuery} from '../../redux/services/cringeVibeCore';
-import {useSelector} from 'react-redux'
+import React from 'react'
+import Track from './Track'
+import {useGetChartsQuery} from '../../redux/services/cringeVibeCore'
+import {useSelector, useDispatch} from 'react-redux'
+import { saveTrackIds } from '../../redux/slices/trackSlice'
 
 const TrackContainer = () => {
     const limit = 10;
     const offset = 0;
-    const {data, isFetching, error} = useGetChartsQuery({ limit, offset });
+    const {data, isFetching, error} = useGetChartsQuery({ limit, offset })
+    const dispatch = useDispatch()
 
     const currentTrack = useSelector(state => state.trackSlice)
+
+    React.useEffect(() => {
+        const trackIds = data?.map((obj) => (obj.id))
+        if (trackIds) {
+            dispatch(saveTrackIds(trackIds))
+        }
+    }, [data, dispatch])
 
     return (
         <div className="mb-[42px] w-full xl:w-7/12">
@@ -22,6 +32,7 @@ const TrackContainer = () => {
             {!isFetching ? data?.map((obj) => (
                 <Track track={obj} key={obj.id} currentTrack={currentTrack}/>
             )): [...new Array(8)].map((_, index) => <Track key={index} />)}
+
         </div>
     );
 };

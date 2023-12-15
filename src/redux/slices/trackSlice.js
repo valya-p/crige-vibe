@@ -8,6 +8,8 @@ const initialState = {
     isPlaying: false,
     duration: 0.0,
     progress: 0.0,
+    durationText: '00:00',
+    trackIds: [],
 };
 
 const trackSlice = createSlice({
@@ -23,6 +25,10 @@ const trackSlice = createSlice({
         setProgress: (state, {payload}) => {
             state.progress = payload.progress
             state.duration = payload.duration
+            state.durationText = payload.durationText
+        },
+        saveTrackIds: (state, {payload}) => {
+            state.trackIds = payload
         }
     },
     extraReducers: {
@@ -37,9 +43,10 @@ const trackSlice = createSlice({
         [trackFetch.fulfilled]: (state, {payload}) => {
             if (payload !== undefined) {
                 state.data = payload
+                state.progress = 0.0
+                state.duration = 0.0
+                state.durationText = '00:00'
             }
-            state.duration = 0.0
-            state.progress = 0.0
             state.isPlaying = true
         },
         [trackFetch.rejected]: (state, {payload}) => {
@@ -50,5 +57,5 @@ const trackSlice = createSlice({
 });
 
 
-export const {pause, disableLoading, setProgress} = trackSlice.actions
+export const {pause, disableLoading, setProgress, saveTrackIds} = trackSlice.actions
 export default trackSlice.reducer

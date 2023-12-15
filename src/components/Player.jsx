@@ -1,7 +1,8 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {trackFetch} from '../redux/services/musicService'
+import {nextTrack, prevTrack, trackFetch} from '../redux/services/musicService'
 import {disableLoading, pause, setProgress} from '../redux/slices/trackSlice'
+import {convertMsToTime} from '../features/converter'
 
 import {
     HiPlay,
@@ -28,6 +29,14 @@ const Player = () => {
         dispatch(pause())
     }
 
+    const onClickNext = () => {
+        dispatch(nextTrack())
+    }
+
+    const onClickPrev = () => {
+        dispatch(prevTrack())
+    }
+
     React.useEffect(() => {
         if (!currentTrack.isLoading) {
             currentTrack.isPlaying ? audioElem.current.play() : audioElem.current.pause()
@@ -40,7 +49,8 @@ const Player = () => {
         dispatch(
             setProgress({
                 progress: currentTime / duration * 100,
-                duration: duration
+                duration: duration,
+                durationText: convertMsToTime(currentTime)
             })
         )
     }
@@ -59,13 +69,13 @@ const Player = () => {
     }
 
     return (
-        <>
-            <audio onCanPlay={onCanPlay} src={currentTrack?.data?.download_info[0].direct_link} ref={audioElem}
+        <div hidden={currentTrack.data === null}>
+            <audio onEnded={onClickNext} onCanPlay={onCanPlay} src={currentTrack?.data?.download_info[0].direct_link} ref={audioElem}
                    onTimeUpdate={onPlaying}/>
             <div
                 className="row-start-6 bg-[#1D1D1D] text-white py-[10px] px-[15px] flex justify-between items-center sm:py-[15px] lg:px-[85px] md:py-[15px] md:px-[50px] group">
                 <div className="flex items-center mr-[10px]">
-                    <button className="hover:scale-105">
+                    <button className="hover:scale-105" onClick={onClickPrev}>
                         <TbPlayerSkipBackFilled
                             size={24}
                             className="mr-[9px] text-[#91448E] hover:text-[#F65CF0]"
@@ -91,7 +101,7 @@ const Player = () => {
                             </button>
                         )}
                     </div>
-                    <button className="hover:scale-105">
+                    <button className="hover:scale-105" onClick={onClickNext}>
                         <TbPlayerSkipForwardFilled
                             size={24}
                             className="mr-[11px] text-[#91448E] hover:text-[#F65CF0]"
@@ -115,7 +125,7 @@ const Player = () => {
                     }} className={`origin-left h-[5px] bg-[#F65CF0] rounded-full`}></div>
                 </div>
                 <div className="flex justify-center items-center ml-[20px]">
-                    <p className="mr-[24px] hidden sm:block">{currentTrack?.data?.duration_text}</p>
+                    <p className="mr-[24px] hidden sm:block">{currentTrack?.durationText}</p>
                     <button className="hover:scale-105 hidden sm:block">
                         <HiArrowPathRoundedSquare size={24} color="#F65CF0" className="mr-[24px] "/>
                     </button>
@@ -130,7 +140,7 @@ const Player = () => {
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
